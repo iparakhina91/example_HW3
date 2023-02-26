@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTest {
     @BeforeAll
@@ -27,19 +26,21 @@ public class PracticeFormTest {
         $(".react-datepicker__month-select").click();
         $("option[value='3']").click();
         $(".react-datepicker__year-select").click();
-        $("option[value='2008']").click();
-        $("div[aria-label='Choose Wednesday, April 16th, 2008']").click();
+        $("option[value='2004']").click();
+        $("div[aria-label='Choose Friday, April 16th, 2004']").click();
+        $("#subjectsInput").setValue("Economics").pressEnter().setValue("English").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("Cat_image.jpeg");
         $("#currentAddress").setValue("Moscow");
-        $("#stateCity-wrapper").click();
-        $("#state>Haryana").click();
-        $("#city>Panipat").click();
+        $("#state").click();
+        $("#state").$(byText("Haryana")).click();
+        $("#city").click();
+        $("#city").$(byText("Panipat")).click();
         $("#submit").click();
 
-        $(".modal-dialog modal-lg").shouldHave(text("Irina Korovina"),
+        $(".modal-body").shouldHave(text("Irina Korovina"),
                 text("iparakhina91@gmail.com"), text("Female"), text("8999999999"),
-                text("16 April,1991"), text("QA"), text("Reading"), text("Cat_image.jpeg"),
-                text("Moscow"), text("Haryana Panipat"));
+                text("16 April,2004"), text("Economics, English"), text("Reading"),
+                text("Cat_image.jpeg"), text("Moscow"), text("Haryana Panipat"));
     }
 }
