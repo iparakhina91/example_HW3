@@ -36,6 +36,8 @@ public class PracticeFormTest {
         $("#state").$(byText("Haryana")).click();
         $("#city").click();
         $("#city").$(byText("Panipat")).click();
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#submit").click();
 
         $(".modal-body").shouldHave(text("Irina Korovina"),
