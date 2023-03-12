@@ -36,7 +36,7 @@ public class PracticeFormWithPageObjectsTest extends TestBase {
                 .setAddress(userAddress)
                 .setState(userState)
                 .setCity(userCity)
-                .submitting();
+                .clickSubmit();
 
         registrationPage.verifyResultsModalAppears()
                 .verifyResults("Student Name", userFirstName + " " + userLastName)

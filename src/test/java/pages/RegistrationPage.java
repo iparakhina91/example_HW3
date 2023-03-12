@@ -25,7 +25,7 @@ public class RegistrationPage {
             uploadPicture = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
             stateInput = $("#state"),
-            stateCity = $("#city"),
+            cityInput = $("#city"),
             submitButton = $("#submit");
 
     public RegistrationPage openPage() {
@@ -111,13 +111,13 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setCity(String value) {
-        stateCity.click();
-        stateCity.$(byText(value)).click();
+        cityInput.click();
+        cityInput.$(byText(value)).click();
 
         return this;
     }
 
-    public RegistrationPage submitting() {
+    public RegistrationPage clickSubmit() {
         submitButton.click();
 
         return this;
