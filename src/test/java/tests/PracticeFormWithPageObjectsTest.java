@@ -14,7 +14,8 @@ public class PracticeFormWithPageObjectsTest extends TestBase {
         String dayOfBirthDate = "16";
         String monthOfBirthDate = "April";
         String yearOfBirthDate = "2004";
-        String userSubjects = "Economics";
+        String userSubject1 = "Economics";
+        String userSubject2 = "English";
         String userHobbies = "Reading";
         String pictureName = "Cat_image.jpeg";
         String userAddress = "Moscow";
@@ -28,7 +29,7 @@ public class PracticeFormWithPageObjectsTest extends TestBase {
                 .setGender(userGender)
                 .setNumber(userMobile)
                 .setBirthDate(dayOfBirthDate, monthOfBirthDate, yearOfBirthDate)
-                .setSubjects(userSubjects)
+                .setSubjects(userSubject1, userSubject2)
                 .setHobbies(userHobbies)
                 .setPicture(pictureName)
                 .setAddress(userAddress)
@@ -42,7 +43,7 @@ public class PracticeFormWithPageObjectsTest extends TestBase {
                 .verifyResults("Gender", "Female")
                 .verifyResults("Mobile", "8999999999")
                 .verifyResults("Date of Birth", "16 April,2004")
-                .verifyResults("Subjects", "Economics")
+                .verifyResults("Subjects", "Economics, English")
                 .verifyResults("Hobbies", "Reading")
                 .verifyResults("Picture", "Cat_image.jpeg")
                 .verifyResults("Address", "Moscow")

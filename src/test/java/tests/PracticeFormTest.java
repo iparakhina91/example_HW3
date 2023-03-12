@@ -45,7 +45,7 @@ public class PracticeFormTest {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".modal-body").shouldHave(text("Irina Korovina"),
                 text("iparakhina91@gmail.com"), text("Female"), text("8999999999"),
-                text("16 April,2004"), text("Economics, English"), text("Reading"),
+                text("16 April,2004"), text("Economics"), text("Reading"),
                 text("Cat_image.jpeg"), text("Moscow"), text("Haryana Panipat"));
     }
 }
