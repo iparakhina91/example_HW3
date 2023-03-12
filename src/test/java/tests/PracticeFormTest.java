@@ -32,7 +32,7 @@ public class PracticeFormTest {
         $(".react-datepicker__month-select").selectOption("April");
         $(".react-datepicker__year-select").selectOption("2004");
         $(".react-datepicker__day--016:not(.react-datepicker__day--outside-month)").click();
-        $("#subjectsInput").setValue("Economics").pressEnter().setValue("English").pressEnter();
+        $("#subjectsInput").setValue("Economics").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("Cat_image.jpeg");
         $("#currentAddress").setValue("Moscow");
