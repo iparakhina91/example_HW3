@@ -12,15 +12,16 @@ public class PracticeFormWithFakerUtilsTest extends TestBase {
         Faker faker = new Faker();
 
         String[] genders = {"Male", "Female", "Other"};
+        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
         String userFirstName = faker.name().firstName();
         String userLastName = faker.name().lastName();
         String userEmail = faker.internet().emailAddress();
         String userGender = getRandomItemFromArray(genders);
         String userMobile = "8" + faker.phoneNumber().subscriberNumber(9);
-        String dayOfBirthDate = "16";
-        String monthOfBirthDate = "April";
-        String yearOfBirthDate = "2004";
+        String dayOfBirthDate = String.valueOf(faker.number().numberBetween(1, 28));
+        String monthOfBirthDate = getRandomItemFromArray(months);
+        String yearOfBirthDate = String.valueOf(faker.number().numberBetween(1900, 2100));
         String userSubject1 = "Economics";
         String userSubject2 = "English";
         String userHobbies = "Reading";
