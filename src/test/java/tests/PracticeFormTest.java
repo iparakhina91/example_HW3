@@ -1,7 +1,10 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -26,11 +29,9 @@ public class PracticeFormTest {
         $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("89999999999");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $("option[value='3']").click();
-        $(".react-datepicker__year-select").click();
-        $("option[value='2004']").click();
-        $("div[aria-label='Choose Friday, April 16th, 2004']").click();
+        $(".react-datepicker__month-select").selectOption("April");
+        $(".react-datepicker__year-select").selectOption("2004");
+        $(".react-datepicker__day--016:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("Economics").pressEnter().setValue("English").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("Cat_image.jpeg");
@@ -40,6 +41,8 @@ public class PracticeFormTest {
         $("#city").click();
         $("#city").$(byText("Panipat")).click();
         $("#submit").click();
+        $(".modal-dialog").should(appear);
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".modal-body").shouldHave(text("Irina Korovina"),
                 text("iparakhina91@gmail.com"), text("Female"), text("8999999999"),
                 text("16 April,2004"), text("Economics, English"), text("Reading"),
