@@ -16,6 +16,9 @@ public class PracticeFormTest {
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
         $("#firstName").setValue("Irina");
         $("#lastName").setValue("Korovina");
@@ -36,10 +39,7 @@ public class PracticeFormTest {
         $("#state").$(byText("Haryana")).click();
         $("#city").click();
         $("#city").$(byText("Panipat")).click();
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
         $("#submit").click();
-
         $(".modal-body").shouldHave(text("Irina Korovina"),
                 text("iparakhina91@gmail.com"), text("Female"), text("8999999999"),
                 text("16 April,2004"), text("Economics, English"), text("Reading"),
