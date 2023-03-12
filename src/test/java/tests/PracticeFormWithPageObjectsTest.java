@@ -10,7 +10,7 @@ public class PracticeFormWithPageObjectsTest extends TestBase {
         String userLastName = "Korovina";
         String userEmail = "iparakhina91@gmail.com";
         String userGender = "Female";
-        String userMobile = "89999999999";
+        String userMobile = "9999999999";
         String dayOfBirthDate = "16";
         String monthOfBirthDate = "April";
         String yearOfBirthDate = "2004";
@@ -23,6 +23,7 @@ public class PracticeFormWithPageObjectsTest extends TestBase {
         String userCity = "Panipat";
 
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName(userFirstName)
                 .setLastName(userLastName)
                 .setEmail(userEmail)
@@ -38,15 +39,15 @@ public class PracticeFormWithPageObjectsTest extends TestBase {
                 .submitting();
 
         registrationPage.verifyResultsModalAppears()
-                .verifyResults("Student Name", "Irina Korovina")
-                .verifyResults("Student Email", "iparakhina91@gmail.com")
-                .verifyResults("Gender", "Female")
-                .verifyResults("Mobile", "8999999999")
-                .verifyResults("Date of Birth", "16 April,2004")
-                .verifyResults("Subjects", "Economics, English")
-                .verifyResults("Hobbies", "Reading")
-                .verifyResults("Picture", "Cat_image.jpeg")
-                .verifyResults("Address", "Moscow")
-                .verifyResults("State and City", "Haryana Panipat");
+                .verifyResults("Student Name", userFirstName + " " + userLastName)
+                .verifyResults("Student Email", userEmail)
+                .verifyResults("Gender", userGender)
+                .verifyResults("Mobile", userMobile)
+                .verifyResults("Date of Birth", dayOfBirthDate + " " + monthOfBirthDate + "," + yearOfBirthDate)
+                .verifyResults("Subjects", userSubject1 + ", " + userSubject2)
+                .verifyResults("Hobbies", userHobbies)
+                .verifyResults("Picture", pictureName)
+                .verifyResults("Address", userAddress)
+                .verifyResults("State and City", userState + " " + userCity);
     }
 }
