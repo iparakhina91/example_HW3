@@ -79,8 +79,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setSubjects(String value1, String value2) {
-        subjectsInput.setValue(value1).pressEnter().setValue(value2).pressEnter();
+    public RegistrationPage setSubjects(String value) {
+        subjectsInput.setValue(value).pressEnter();
 
         return this;
     }

@@ -1,34 +1,13 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
-import static utils.RandomUtils.*;
+import static tests.TestData.*;
 
 public class PracticeFormWithFakerUtilsTest extends TestBase {
 
     @Test
     void fillFormTest() {
-        Faker faker = new Faker();
-
-        String[] genders = {"Male", "Female", "Other"};
-        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-
-        String userFirstName = faker.name().firstName();
-        String userLastName = faker.name().lastName();
-        String userEmail = faker.internet().emailAddress();
-        String userGender = getRandomItemFromArray(genders);
-        String userMobile = "8" + faker.phoneNumber().subscriberNumber(9);
-        String dayOfBirthDate = String.valueOf(faker.number().numberBetween(1, 28));
-        String monthOfBirthDate = getRandomItemFromArray(months);
-        String yearOfBirthDate = String.valueOf(faker.number().numberBetween(1900, 2100));
-        String userSubject1 = "Economics";
-        String userSubject2 = "English";
-        String userHobbies = "Reading";
-        String pictureName = "Cat_image.jpeg";
-        String userAddress = faker.address().fullAddress();
-        String userState = "Haryana";
-        String userCity = "Panipat";
 
         registrationPage.openPage()
                 .removeBanners()
@@ -38,7 +17,7 @@ public class PracticeFormWithFakerUtilsTest extends TestBase {
                 .setGender(userGender)
                 .setNumber(userMobile)
                 .setBirthDate(dayOfBirthDate, monthOfBirthDate, yearOfBirthDate)
-                .setSubjects(userSubject1, userSubject2)
+                .setSubjects(userSubject)
                 .setHobbies(userHobbies)
                 .setPicture(pictureName)
                 .setAddress(userAddress)
@@ -52,7 +31,7 @@ public class PracticeFormWithFakerUtilsTest extends TestBase {
                 .verifyResults("Gender", userGender)
                 .verifyResults("Mobile", userMobile)
                 .verifyResults("Date of Birth", dayOfBirthDate + " " + monthOfBirthDate + "," + yearOfBirthDate)
-                .verifyResults("Subjects", userSubject1 + ", " + userSubject2)
+                .verifyResults("Subjects", userSubject)
                 .verifyResults("Hobbies", userHobbies)
                 .verifyResults("Picture", pictureName)
                 .verifyResults("Address", userAddress)
