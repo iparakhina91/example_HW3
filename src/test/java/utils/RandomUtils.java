@@ -3,19 +3,10 @@ package utils;
 import com.github.javafaker.Faker;
 
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 
 import static tests.TestData.userState;
 
 public class RandomUtils {
-    public static int getRandomInt(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
-    public static String getRandomItemFromArray(String[] values) {
-        int index = getRandomInt(0, values.length - 1);
-        return values[index];
-    }
 
     public static String getRandomFirstName() {
         return new Faker().name().firstName();
