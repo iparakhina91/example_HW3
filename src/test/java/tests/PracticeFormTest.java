@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class PracticeFormTest {
     @BeforeAll
     static void beforeAll() {
+        Configuration.browserCapabilities.setCapability("","--remote-allow-origins=*");
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
     }
